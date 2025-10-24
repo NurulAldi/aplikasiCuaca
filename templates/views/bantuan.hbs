@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+
+    body.nf-page {
+        display: block;
+        max-width: none;
+        margin: 0; padding: 0;
+        background: #141414;
+        color: #e5e5e5;
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    .nf-viewport {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nf-page header { margin: 0; padding: clamp(12px, 2vmin, 20px) 4vw; }
+    .nf-page header a { color: #b3b3b3; text-decoration: none; margin-right: 16px; }
+    .nf-page header a:hover { color: #ffffff; }
+    .nf-page footer { margin: 0; padding: clamp(12px, 2vmin, 16px) 4vw; color: #8c8c8c; border-top: 1px solid rgba(255,255,255,0.12); }
+
+    .nf-main {
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: clamp(16px, 4vmin, 40px) 4vw;
+        padding-bottom: 60px;
+    }
+
+    .card {
+        width: min(860px, 92vw);
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 16px;
+        padding: clamp(16px, 4vmin, 36px);
+        box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    }
+
+    .card h1 { margin: 0 0 8px; font-size: clamp(24px, 4vw, 40px); font-weight: 800; }
+    .card p { margin: 0; color: #b3b3b3; font-size: clamp(14px, 2.2vw, 18px); line-height: 1.6; }
+    .nf-accent { color: #E50914; }
+
+    .nf-main::before {
+        content: "";
+        position: absolute; inset: 0;
+        pointer-events: none;
+        background: radial-gradient(120% 120% at 10% 10%, rgba(229,9,20,.08), transparent 60%),
+                                linear-gradient(180deg, rgba(0,0,0,.35), transparent 40%, rgba(0,0,0,.45));
+    }
+
+    .faq {
+        width: min(860px, 92vw);
+        margin-top: clamp(16px, 4vmin, 32px);
+        display: grid;
+        gap: clamp(8px, 2vmin, 14px);
+    }
+    .faq h2 {
+        margin: 0 0 8px;
+        font-size: clamp(20px, 3.6vw, 32px);
+        font-weight: 800;
+    }
+    .faq details {
+        border-radius: 10px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.12);
+    }
+    .faq summary {
+        list-style: none;
+        cursor: pointer;
+        padding: clamp(12px, 2.4vmin, 18px) clamp(14px, 3vmin, 22px);
+        position: relative;
+        font-weight: 700;
+        font-size: clamp(14px, 2.6vw, 18px);
+        color: #fff;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+        content: "+";
+        position: absolute;
+        right: clamp(12px, 3vmin, 20px);
+        top: 50%; transform: translateY(-50%);
+        font-size: 20px; line-height: 1;
+        color: #E50914;
+        transition: transform .2s ease;
+    }
+    .faq details[open] summary::after { content: "−"; transform: translateY(-50%); }
+    .faq .answer {
+        padding: clamp(12px, 2.4vmin, 18px) clamp(14px, 3vmin, 22px);
+        color: #b3b3b3;
+        font-size: clamp(13px, 2.3vw, 17px);
+        line-height: 1.65;
+        border-top: 1px solid rgba(255,255,255,0.12);
+        background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.0));
+    }
+
+    .graphql-img {
+        width: 100%;
+        max-width: 600px;
+        margin: 16px 0;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.12);
+    }
+</style>
+<body class="nf-page">
+    <div class="nf-viewport">
+        <header>
+            <a href="/">Home</a>
+            <a href="/tentang">Tentang</a>
+            <a href="/bantuan">Bantuan</a>
+            <a href="/berita">Berita</a>
+        </header>
+        <main class="nf-main">
+            <section class="card">
+                <h1>Bantuan <span class="nf-accent">Aplikasi</span></h1>
+            </section>
+            <section class="faq">
+                <h2>FAQ (Frequently Asked Questions)</h2>
+                <details>
+                    <summary>Halaman ini digunakan untuk apa?</summary>
+                    <div class="answer">Halaman ini merupakan aplikasi web yang menyediakan layanan pengecekan informasi cuaca berdasarkan lokasi yang diinputkan pengguna. Aplikasi ini menggunakan API eksternal untuk mendapatkan data prediksi cuaca secara real-time dan menampilkannya dalam format yang mudah dipahami.</div>
+                </details>
+                <details>
+                    <summary>Apa itu API?</summary>
+                    <div class="answer">API (Application Programming Interface) adalah sekumpulan protokol dan alat yang memungkinkan berbagai aplikasi untuk saling berkomunikasi dan bertukar data. API bertindak sebagai perantara yang menghubungkan satu sistem dengan sistem lainnya, memungkinkan pengembang untuk mengakses fitur atau data dari layanan eksternal tanpa perlu mengetahui detail implementasi internal layanan tersebut.</div>
+                </details>
+                <details>
+                    <summary>API apa yang digunakan dalam aplikasi ini?</summary>
+                    <div class="answer">Aplikasi ini menggunakan dua API utama: Geocoding API untuk mengkonversi nama lokasi menjadi koordinat geografis (latitude dan longitude), dan Weather API untuk mendapatkan data prediksi cuaca berdasarkan koordinat tersebut. Kedua API ini bekerja secara terintegrasi untuk memberikan informasi cuaca yang akurat sesuai lokasi yang dicari pengguna.</div>
+                </details>
+                <details>
+                    <summary>Salah satu pola arsitektur API adalah GraphQL</summary>
+                    <div class="answer">
+                        GraphQL adalah query language dan runtime untuk API yang dikembangkan oleh Facebook. Berbeda dengan REST API tradisional, GraphQL memungkinkan klien untuk meminta data yang spesifik sesuai kebutuhan, menghindari over-fetching atau under-fetching data.
+                        <br><br>
+                        <img src="img/graphql.png" alt="GraphQL Architecture" class="graphql-img">
+                        <br><br>
+                        Klien mengirimkan semacam permintaan terstruktur yang mendefinisikan data apa aja yang ingin diambil dari server. GraphQL menerima query dari klien, kemudian menafsirkan query itu untuk mengetahui data apa yang diminta. Setelah itu, GraphQL akan mengambil data dari berbagai sumber di belakang layar yang bisa berasal dari sistem lama, microservices, API pihak ketiga. Setelah GraphQL ngumpulin semua data dari sumber-sumber tadi, dia menyatukan hasilnya dan mengirim balik ke klien dalam format JSON. Dan JSON-nya hanya berisi data yang diminta di query, tidak ada data tambahan yang tidak perlu.
+                    </div>
+                </details>
+            </section>
+        </main>
+        {{>footer}}
+    </div>
+</body>
+</html>

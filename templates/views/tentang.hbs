@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>head}}
+<style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+
+    body.nf-page {
+        display: block;
+        max-width: none;
+        margin: 0; padding: 0;
+        background: #141414;
+        color: #e5e5e5;
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    .nf-viewport {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nf-page header { margin: 0; padding: clamp(12px, 2vmin, 20px) 4vw; }
+    .nf-page header a { color: #b3b3b3; text-decoration: none; margin-right: 16px; }
+    .nf-page header a:hover { color: #ffffff; }
+    .nf-page footer { margin: 0; padding: clamp(12px, 2vmin, 16px) 4vw; color: #8c8c8c; border-top: 1px solid rgba(255,255,255,0.12); }
+
+    .nf-main {
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: clamp(16px, 4vmin, 40px) 4vw;
+        padding-bottom: 60px;
+    }
+
+    .hero {
+        width: min(1200px, 92vw);
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        align-items: center;
+        gap: clamp(16px, 4vmin, 40px);
+    }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; } }
+
+    .hero-title {
+        margin: 0;
+        font-weight: 800;
+        font-size: clamp(32px, 6vw, 72px);
+        color: #ffffff;
+        letter-spacing: .5px;
+        text-shadow: 0 2px 12px rgba(0,0,0,.6);
+    }
+    .hero-sub { margin: 10px 0 0; color: #b3b3b3; font-size: clamp(14px, 2.2vw, 20px); line-height: 1.5; }
+    .nf-accent { color: #E50914; }
+
+    .poster {
+        width: 100%;
+        max-width: 420px;
+        aspect-ratio: 2 / 3;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 12px 40px rgba(0,0,0,.6), 0 0 0 2px rgba(229, 9, 20, .6) inset;
+    }
+
+    .nf-main::before {
+        content: "";
+        position: absolute; inset: 0;
+        pointer-events: none;
+        background: radial-gradient(120% 120% at 10% 10%, rgba(229,9,20,.08), transparent 60%),
+                                linear-gradient(180deg, rgba(0,0,0,.35), transparent 40%, rgba(0,0,0,.45));
+    }
+
+    .certifications-section {
+        width: min(1200px, 92vw);
+        margin-top: 60px;
+    }
+
+    .certifications-title {
+        font-size: clamp(24px, 4vw, 36px);
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+    }
+
+    .cert-card {
+        background: #1f1f1f;
+        border-radius: 8px;
+        padding: 20px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .cert-card:hover {
+        border-color: rgba(229, 9, 20, 0.6);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    }
+
+    .cert-logo {
+        width: 48px;
+        height: 48px;
+        background: #2a2a2a;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-weight: bold;
+        font-size: 20px;
+        color: #E50914;
+    }
+
+    .cert-content {
+        flex: 1;
+    }
+
+    .cert-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #ffffff;
+        margin: 0 0 4px 0;
+        line-height: 1.3;
+    }
+
+    .cert-org {
+        font-size: 14px;
+        color: #b3b3b3;
+        margin: 0 0 8px 0;
+    }
+
+    .cert-date {
+        font-size: 12px;
+        color: #8c8c8c;
+        margin: 0;
+    }
+</style>
+<body class="nf-page">
+    <div class="nf-viewport">
+        <header>
+            <a href="/">Home</a>
+            <a href="/tentang">Tentang</a>
+            <a href="/bantuan">Bantuan</a>
+            <a href="/berita">Berita</a>
+        </header>
+        <main class="nf-main">
+            <section class="hero">
+                <div class="hero-copy">
+                    <h1 class="hero-title">Tentang <span class="nf-accent">saya</span></h1>
+                    <p class="hero-sub">Saya punya passion besar di data engineering dan sangat menikmati proses memecahkan teka-teki data yang rumit. Saya sudah mengasah skill dasar yang kuat di SQL dan Python, termasuk pengalaman membangun pipeline data sederhana. <br><br> Fokus utama saya adalah memastikan data itu bersih, rapi, dan gampang diakses oleh tim yang membutuhkan. Saya pembelajar cepat yang antusias mendalami tools infrastruktur data baru dan siap berkontribusi langsung.</p>
+                </div>
+                <img class="poster" src="img/gambar.png" alt="Poster profil" style="width: 20vw; height: 60vh"> 
+            </section>
+
+            <section class="certifications-section">
+                <h2 class="certifications-title">Sertifikasi</h2>
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-logo" style="background: #0A66C2; color: white;">fC</div>
+                        <div class="cert-content">
+                            <h3 class="cert-title">Machine Learning With Python</h3>
+                            <p class="cert-org">freeCodeCamp</p>
+                            <p class="cert-date">Diterbitkan Apr 2025</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-logo" style="background: #03EF62; color: #141414;">DC</div>
+                        <div class="cert-content">
+                            <h3 class="cert-title">Data Engineer Associate</h3>
+                            <p class="cert-org">DataCamp</p>
+                            <p class="cert-date">Diterbitkan Jul 2024 Kedaluwarsa Jul 2026</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-logo" style="background: #03EF62; color: #141414;">DC</div>
+                        <div class="cert-content">
+                            <h3 class="cert-title">SQL Associate</h3>
+                            <p class="cert-org">DataCamp</p>
+                            <p class="cert-date">Diterbitkan Jul 2024 Kedaluwarsa Jul 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        {{>footer}}
+    </div>
+</body>
+</html>
